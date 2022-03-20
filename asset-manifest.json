@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/workate-task/static/css/main.30c14f83.css",
-    "main.js": "/workate-task/static/js/main.727a58c6.js",
-    "index.html": "/workate-task/index.html",
-    "main.30c14f83.css.map": "/workate-task/static/css/main.30c14f83.css.map",
-    "main.727a58c6.js.map": "/workate-task/static/js/main.727a58c6.js.map"
+    "main.css": "./static/css/main.30c14f83.css",
+    "main.js": "./static/js/main.78407e80.js",
+    "index.html": "./index.html",
+    "main.30c14f83.css.map": "./static/css/main.30c14f83.css.map",
+    "main.78407e80.js.map": "./static/js/main.78407e80.js.map"
   },
   "entrypoints": [
     "static/css/main.30c14f83.css",
-    "static/js/main.727a58c6.js"
+    "static/js/main.78407e80.js"
   ]
 }
