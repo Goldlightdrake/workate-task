@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Parallax } from "react-parallax";
 
@@ -43,7 +43,7 @@ const BackgroundImage = () => {
   };
 
   return (
-    <BackgroundImageSection>
+    <BackgroundImageSection data-testid="background-image-section">
       <StyledParallax
         bgImage={`https://picsum.photos/seed/${generateSeed(5)}/2560/560`}
         strength={600}

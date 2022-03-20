@@ -3,11 +3,10 @@ import styled from "styled-components";
 import Fab from "@mui/material/Fab";
 import Skeleton from "@mui/material/Skeleton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import LikeButton from "../LikeButton";
 
 const imageBaseUrl = "http://source.unsplash.com/";
 
-const ImageContainer = styled.section`
+const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -57,6 +56,7 @@ const StyledSkeleton = styled(Skeleton)`
   // mui class within styled compontent but it doesn't worked.
   width: 40rem !important;
   height: 30rem !important;
+  border-radius: 1.5rem;
   @media (max-width: 944px) {
     height: 25rem !important;
     width: 35rem !important;
@@ -78,14 +78,16 @@ const Image = ({ image }) => {
     <ImageContainer
       onMouseOver={() => setImageToggled(true)}
       onMouseLeave={() => setImageToggled(false)}
+      data-testid="image-container"
     >
-      {console.log(imageToggled)}
       <StyledSkeleton
+        data-testid="skeleton"
         variant="rectangular"
         animation="wave"
         sx={{ display: loading ? "block" : "none" }}
       />
       <ImagePicture
+        data-testid="image"
         isLoading={loading}
         src={imageUrl}
         onLoad={() => setLoading(false)}

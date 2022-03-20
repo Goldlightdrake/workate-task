@@ -78,7 +78,7 @@ const ImageGrid = () => {
   }, []);
 
   return (
-    <ImageGridSection>
+    <ImageGridSection data-testid="image-grid-section">
       <ImageGridContainer>
         {images.map((image) => (
           <Image key={image.id} image={image} />
@@ -95,6 +95,7 @@ const ImageGrid = () => {
           loading={loading}
           loadingIndicator="Ładuje..."
           variant="contained"
+          data-testid="load-more-button"
         >
           Załaduj więcej
         </LoadingButton>

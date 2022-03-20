@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const itemsPerPage = 3;
 
-export const getImagesList = async ({ page }) => {
+export const getImagesList = async ({ page = 1 }) => {
   return await axiosClient
     .get(`v2/list?page=${page}&limit=${itemsPerPage}`)
     .then((response) => {
