@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
 import Fab from "@mui/material/Fab";
 import Skeleton from "@mui/material/Skeleton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import {
+  saveLikedImageToLocalStorage,
+  removeLikedImageFromLocalStorage,
+  isImageLikedFromLocalStorage,
+} from "../../services/imageServices";
 
 const imageBaseUrl = "http://source.unsplash.com/";
 
@@ -70,7 +76,7 @@ const StyledSkeleton = styled(Skeleton)`
 const Image = ({ image }) => {
   const [loading, setLoading] = useState(true);
   const [imageToggled, setImageToggled] = useState(false);
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(isImageLikedFromLocalStorage(image));
   const { author, url } = image;
   const imageUrl = imageBaseUrl + url.split("/")[4];
 
@@ -96,7 +102,18 @@ const Image = ({ image }) => {
         <>
           <ImageAuthor>{author}</ImageAuthor>
           <ImageAddToFav>
-            <Fab aria-label="like" onClick={() => setFavorite(!favorite)}>
+            <Fab
+              aria-label="like"
+              onClick={() => {
+                setFavorite(!favorite);
+                //Because we are using setState in this scope we must make our localStorage saving reversed.
+                if (favorite) {
+                  removeLikedImageFromLocalStorage(image);
+                } else {
+                  saveLikedImageToLocalStorage(image);
+                }
+              }}
+            >
               <FavoriteIcon fontSize="large" color={favorite ? "error" : ""} />
             </Fab>
           </ImageAddToFav>
